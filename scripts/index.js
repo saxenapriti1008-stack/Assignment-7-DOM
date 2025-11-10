@@ -124,3 +124,19 @@ function gameOver() {
   endgameEl.style.display = "flex";
 }
 
+//  PART 3
+
+// Toggle settings visibility
+
+settingsBtn.addEventListener("click", () => settings.classList.toggle("hide"));
+
+// Change difficulty
+
+settingsForm.addEventListener("change", (e) => {
+  difficulty = e.target.value;
+  localStorage.setItem("difficulty", difficulty);
+});
+
+// Start the game by adding the first word
+
+addWordToDOM();
