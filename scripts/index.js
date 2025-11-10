@@ -42,4 +42,16 @@ let score = 0;
 let time = 10;
 
 
+// Set difficulty (load from localStorage or default to 'medium')
+
+let difficulty = localStorage.getItem("difficulty") !== null 
+  ? localStorage.getItem("difficulty") 
+  : "medium";
+
+// Set the difficulty dropdown value
+
+difficultySelect.value = difficulty;
+
+// Focus input on start
+text.focus();
 
