@@ -55,3 +55,44 @@ difficultySelect.value = difficulty;
 // Focus input on start
 text.focus();
 
+
+// PART 1 
+
+// Function to add random word to DOM
+
+function addWordToDOM() {
+  randomWord = words[Math.floor(Math.random() * words.length)];
+  word.innerHTML = randomWord;
+}
+
+// Function to update score
+
+function updateScore() {
+  score++;
+  scoreEl.innerHTML = score;
+}
+
+// Event listener for typing
+
+text.addEventListener("input", (e) => {
+  const insertedText = e.target.value.trim();
+
+  if (insertedText === randomWord) {
+    updateScore();
+    addWordToDOM();
+
+    // Increase time based on difficulty
+    
+    if (difficulty === "hard") {
+      time += 2;
+    } else if (difficulty === "medium") {
+      time += 3;
+    } else {
+      time += 5;
+    }
+
+    // Clear input field
+    e.target.value = "";
+  }
+});
+
