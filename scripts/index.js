@@ -82,7 +82,7 @@ text.addEventListener("input", (e) => {
     addWordToDOM();
 
     // Increase time based on difficulty
-    
+
     if (difficulty === "hard") {
       time += 2;
     } else if (difficulty === "medium") {
@@ -95,4 +95,32 @@ text.addEventListener("input", (e) => {
     e.target.value = "";
   }
 });
+
+
+//  PART 2 
+
+// Function to update time
+
+const timeInterval = setInterval(updateTime, 1000);
+
+function updateTime() {
+  time--;
+  timeEl.innerHTML = time + "s";
+
+  if (time <= 0) {
+    clearInterval(timeInterval);
+    gameOver();
+  }
+}
+
+// Function to show game over screen
+
+function gameOver() {
+  endgameEl.innerHTML = `
+    <h1>Time ran out!</h1>
+    <p>Your final score is ${score}</p>
+    <button onclick="location.reload()">Restart</button>
+  `;
+  endgameEl.style.display = "flex";
+}
 
